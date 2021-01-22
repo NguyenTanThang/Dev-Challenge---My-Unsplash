@@ -1,38 +1,249 @@
-.App {
-  text-align: center;
+/*
+font-family: 'Montserrat', sans-serif;
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul,
+ol {
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-fluid {
+  width: 100%;
+}
+
+/*Button*/
+.btn {
+  padding: 15px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-primary {
+  background: #3DB46D;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  color: #FFF;
+  border: 1px solid #3DB46D;
+}
+
+.btn-primary:hover {
+  background: #FFF;
+  border: 1px solid #3DB46D;
+  color: #3DB46D;
+}
+
+.btn-light {
+  background: transparent;
+  color: #BDBDBD;
+  border: 1px solid transparent;
+}
+
+.btn-light:hover {
+  background: #BDBDBD;
+  border: 1px solid #BDBDBD;
+  color: #FFF;
+}
+
+.btn-outline-danger {
+  color: #EB5757;
+  border: 1px solid #EB5757;
+  font-size: 0.8rem;
+  border-radius: 38px;
+  background: transparent;
+  padding: 5px 20px;
+}
+
+.btn-outline-danger:hover {
+  background: #EB5757;
+  color: #FFF;
+}
+
+.btn-danger {
+  background: #EB5757;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  color: #FFF;
+  border: 1px solid #EB5757;
+}
+
+.btn-danger:hover {
+  color: #EB5757;
+  background: #FFF;
+}
+
+.btn-block {
+  width: 100%;
+  display: block;
+}
+
+/*Navbar*/
+.navbar {
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.navbar nav {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar nav .navbar-brand {
+  flex: 10%;
+  max-width: 10%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.navbar nav .search-container {
+  flex: 25%;
+  max-width: 25%;
+  margin-left: 20px;
+}
+
+.navbar nav .add-picture {
+  flex: 12%;
+  max-width: 12%;
+  justify-self: flex-end;
+  margin-left: auto;
+}
+
+/*Picture Item*/
+.picture-item {
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+}
+
+.picture-item img {
+  border-radius: 16px;
+}
+
+.picture-item:hover::after,
+.picture-item:hover .picture-item__delete {
+  opacity: 1;
+}
+
+.picture-item:hover .picture-item__title {
+  bottom: 10px;
+}
+
+.picture-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.picture-item__delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.picture-item__title {
+  position: absolute;
+  left: 50%;
+  bottom: -50px;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: left;
+  padding: 0 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #FFF;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+/*Form*/
+.form-group label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 13px;
+  display: block;
+  outline: none;
+  background-color: transparent;
+  color: #000;
+  font-size: 1rem;
+  border: 1px solid #BDBDBD;
+  border-radius: 12px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .navbar nav .navbar-brand {
+    flex: 20%;
+    max-width: 20%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .navbar nav .search-container {
+    flex: 40%;
+    max-width: 40%;
+  }
+
+  .navbar nav .add-picture {
+    flex: 20%;
+    max-width: 20%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .navbar nav {
+    flex-wrap: wrap;
+  }
+
+  .navbar nav .navbar-brand {
+    flex: 30%;
+    max-width: 30%;
+  }
+
+  .navbar nav .search-container {
+    flex: 70%;
+    max-width: 70%;
+    margin-left: 0;
+  }
+
+  .navbar nav .add-picture {
+    flex: 100%;
+    max-width: 100%;
+    margin-top: 10px;
   }
 }
