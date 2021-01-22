@@ -40,3 +40,21 @@
 input::placeholder {
   color: #616475;
 }
+
+/*AntD Modal*/
+.ant-modal-header {
+  border-radius: 0 !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+.ant-modal-footer {
+  border-radius: 0 !important;
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.ant-modal-content {
+  border-radius: 0 !important;
+  border-radius: 10px !important;
+}
